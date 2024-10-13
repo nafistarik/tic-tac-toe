@@ -65,8 +65,16 @@ export default function Board() {
     setSquares(squares.map((square) => ({ ...square, value: null })));
   }
 
+  if (
+    calculateWinner() === null &&
+    squares.every((square) => square.value !== null)
+  ) {
+    setStatus("It's a draw!");
+    setSquares(squares.map((square) => ({ ...square, value: null })));
+  }
+
   return (
-    <div className="flex flex-col justify-center items-center h-lvh bg-orange-100">
+    <div className="flex flex-col justify-center items-center h-lvh bg-[url('/cream-color-background-hzztm89n4et2pj3m.jpg')]">
       <h1 className="text-5xl text-red-800  font-bold ">Tic Tac Toe</h1>
       <div className="grid grid-cols-3 gap-2 w-fit p-4 m-6 justify-center items-center rounded-3xl bg-orange-100 border-4  border-red-800 ">
         {squares.map((square) => (
